@@ -14,6 +14,10 @@ const router = express.Router(); // создаем роутер (обьект г
 
 router.post("/register", validateBody(schemas.registerSchema), ctrl.register);
 
+router.get("/verify/:verificationToken", ctrl.verifyEmail); // маршрут для підтв. email
+
+router.post("/verify", validateBody(schemas.emailSchema), ctrl.resendVerifyEmail);
+
 // создаем маршрут для авторизации
 
 router.post("/login", validateBody(schemas.registerSchema), ctrl.login);
